@@ -30,7 +30,11 @@ alias editor 'MacVim'
 # Abstract positions
 alias full          move screenOriginX;screenOriginY                  screenSizeX;screenSizeY
 alias lefthalf      move screenOriginX;screenOriginY                  screenSizeX/2;screenSizeY
+alias leftbottom    move screenOriginX;screenOriginY+screenSizeY/2    screenSizeX/2;screenSizeY/2
+alias lefttop       move screenOriginX;screenOriginY                  screenSizeX/2;screenSizeY/2
 alias righthalf     move screenOriginX+screenSizeX/2;screenOriginY    screenSizeX/2;screenSizeY
+alias rightbottom   move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2    screenSizeX/2;screenSizeY/2
+alias righttop      move screenOriginX+screenSizeX/2;screenOriginY    screenSizeX/2;screenSizeY/2
 alias rightmost     move screenOriginX+screenSizeX*0.4;screenOriginY  screenSizeX*0.6;screenSizeY
 alias rightless     move screenOriginX+screenSizeX*0.6;screenOriginY  screenSizeX*0.4;screenSizeY
 alias leftmost      move screenOriginX;screenOriginY                  screenSizeX*0.6;screenSizeY
@@ -81,15 +85,15 @@ default 1monitor  resolutions:${mon-laptop}
 
 # Numpad location Bindings
 bind pad0 ${showHintsLeftHand}
-bind pad1 ${leftless}
+bind pad1 ${leftbottom}
 bind pad2 push bottom bar-resize:screenSizeY/2
-bind pad3 ${rightless}
+bind pad3 ${rightbottom}
 bind pad4 ${lefthalf}
 bind pad5 ${full}
 bind pad6 ${righthalf}
-bind pad7 ${leftmost}
+bind pad7 ${lefttop}
 bind pad8 push top bar-resize:screenSizeY/2
-bind pad9 ${rightmost}
+bind pad9 ${righttop}
 bind padEnter grid padding:5 ${mon-laptop}:6,2 ${mon-samsung}:8,3
 bind pad+ throw next
 bind pad. focus behind
@@ -108,6 +112,7 @@ bind j:${hyper} push bottom bar-resize:screenSizeY/2
 bind h:${hyper} ${lefthalf}
 bind l:${hyper} ${righthalf}
 bind k:${hyper} push top bar-resize:screenSizeY/2
+bind 0:${hyper} throw next
 
 
 # Resize Bindings
