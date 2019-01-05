@@ -49,13 +49,34 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # plugins=(git rails ruby vundle vagrant brew capistrano gem git-extras git-remote-branch history osx rake rvm tmux tmuxinator)
-plugins=(git rails ruby vundle vagrant brew capistrano gem git-extras git-remote-branch history osx rake rvm )
+plugins=(git rails ruby vundle vagrant brew capistrano gem git-extras git-remote-branch history osx rake chruby docker tmux tmuxinator)
 
 source $ZSH/oh-my-zsh.sh
 
-# PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-# [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+# Rust
+# export PATH=$PATH:~/.cargo/bin
+
+# source '/usr/local/share/chruby/chruby.sh'
+# source '/usr/local/share/chruby/auto.sh'
+# RUBIES+=(~/.rvm/rubies/*)
+
+# if [ -e /Users/nate/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/nate/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 #MYSQL=/usr/local/mysql/bin
 #export PATH=~/bin:$PATH:$MYSQL
 # export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
+
+
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+#
+# # The next line updates PATH for the Google Cloud SDK.
+# source '/Users/nate/Downloads/google-cloud-sdk/path.zsh.inc'
+#
+# # The next line enables shell command completion for gcloud.
+# source '/Users/nate/Downloads/google-cloud-sdk/completion.zsh.inc'
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
