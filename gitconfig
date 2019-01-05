@@ -9,6 +9,7 @@
 [core]
 	editor = vim
 	excludesfile = /Users/nate/.gitignore_global
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [diff]
 	tool = Kaleidoscope
 [merge]
@@ -17,7 +18,11 @@
 	default = simple
 [alias]
   lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
-	today = log --since=midnight --author='Nathan Lee' --oneline
+  today = log --since=midnight --author='Nathan Lee' --oneline
+  graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)(%an)%Creset' --abbrev-commit --date=relative
+  incoming = "!_git_in() { git fetch ${1:-origin} && git log ..${1:-origin}/${2:-`git rev-parse --abbrev-ref HEAD`}; }; _git_in"
+  outgoing = "!_git_out() { git fetch ${1:-origin} && git log ${1:-origin}/${2:-`git rev-parse --abbrev-ref HEAD`}..; }; _git_out"
+  pr = "!_git_pr() { git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1; }; _git_pr"
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
@@ -27,3 +32,20 @@
 	trustExitCode = true
 [mergetool]
 	prompt = false
+[credential]
+	helper = osxkeychain
+[heroku]
+	account = personal
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[interactive]
+	diffFilter = diff-so-fancy --patch-mode | less --tabs=4 -RFX

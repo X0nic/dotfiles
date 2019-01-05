@@ -6,14 +6,20 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="sunrise"
+# ZSH_THEME="sunrise"
+ZSH_THEME="agnoster"
+# ZSH_THEME="pure"
+# ZSH_THEME="random"
+DEFAULT_USER="nate"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vim="mvim -v"
-alias etfdev="cd ~/Documents/dev/etfdb.com"
-alias divdev="cd ~/Documents/dev/dividend.com"
+# alias vim="mvim -v"
+# alias etfdev="cd ~/Documents/dev/etfdb.com"
+# alias divdev="cd ~/Documents/dev/dividend.com"
+alias rvmify='echo 2.5.1 > .ruby-version && echo "${PWD##*/}" > .ruby-gemset && cd . && rvm info'
+alias dockerify='eval "$(boot2docker shellinit)"'
 
 alias ack='nocorrect ack'
 
