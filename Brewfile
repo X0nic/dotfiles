@@ -28,7 +28,6 @@ brew 'fzf'
 brew 'vim'
 brew 'youtube-dl'
 brew 'diff-so-fancy'
-brew 'reattach-to-user-namespace'
 
 tap 'mas-cli/tap'
 # tap-pin 'mas-cli/tap'
