@@ -1,0 +1,21 @@
+# ~/.tmuxinator/.yml
+# you can make as many tabs as you wish...
+
+name: ascend
+root: ~/Documents/dev/ascend
+pre: unset BUNDLE_GEMFILE BUNDLE_BIN_PATH
+windows:
+  - working:
+      layout: main-vertical
+      panes:
+        - shell: git pull
+        - client: cd client && ember server
+        - server: cd server && nodemon index.js
+  - client:
+      layout: main-vertical
+      panes:
+        - cd client && vim
+  - server:
+      layout: main-vertical
+      panes:
+        - cd server && vim

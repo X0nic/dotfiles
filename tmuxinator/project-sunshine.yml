@@ -1,0 +1,20 @@
+# ~/.tmuxinator/.yml
+# you can make as many tabs as you wish...
+
+name: hivis
+root: ~/Documents/dev/project-sunshine
+pre: unset BUNDLE_GEMFILE BUNDLE_BIN_PATH
+windows:
+  - editor:
+      pre:
+        # - echo "I get run in each pane, before each pane command!"
+        -
+      layout: main-vertical
+      panes:
+        - vim
+        # - guard
+  - working:
+      layout: main-vertical
+      panes:
+        - shell: git pull
+        - server: npm start
