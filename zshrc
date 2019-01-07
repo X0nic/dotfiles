@@ -49,9 +49,12 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # plugins=(git rails ruby vundle vagrant brew capistrano gem git-extras git-remote-branch history osx rake rvm tmux tmuxinator)
-plugins=(git rails ruby vundle vagrant brew capistrano gem git-extras git-remote-branch history osx rake chruby docker tmux tmuxinator)
+plugins=(git rails ruby vundle vagrant capistrano gem git-extras git-remote-branch history osx rake chruby docker tmux tmuxinator)
 
 source $ZSH/oh-my-zsh.sh
+
+HISTSIZE=200000
+SAVEHIST=100000
 
 # Rust
 # export PATH=$PATH:~/.cargo/bin
