@@ -3,12 +3,9 @@
 
 name: sunscreen
 root: ~/Documents/dev/qaqc/sunscreen-server
-pre: unset BUNDLE_GEMFILE BUNDLE_BIN_PATH AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY
+# pre: unset BUNDLE_GEMFILE BUNDLE_BIN_PATH AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY
 windows:
   - editor:
-      pre:
-        # - echo "I get run in each pane, before each pane command!"
-        -
       layout: main-vertical
       panes:
         - vim
