@@ -29,5 +29,8 @@ scratchpad
 *.swp
 
 # Ruby Versions
-# .ruby-gemset
+.ruby-gemset
 # .ruby-version
+
+# Posgres
+pg_data

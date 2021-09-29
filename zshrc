@@ -18,7 +18,7 @@ DEFAULT_USER="nate"
 # alias vim="mvim -v"
 # alias etfdev="cd ~/Documents/dev/etfdb.com"
 # alias divdev="cd ~/Documents/dev/dividend.com"
-alias rvmify='echo 2.5.1 > .ruby-version && echo "${PWD##*/}" > .ruby-gemset && cd . && rvm info'
+alias rvmify='echo 2.6.3 > .ruby-version && echo "${PWD##*/}" > .ruby-gemset && cd . && rvm info'
 alias dockerify='eval "$(boot2docker shellinit)"'
 
 alias ack='nocorrect ack'
@@ -49,7 +49,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # plugins=(git rails ruby vundle vagrant brew capistrano gem git-extras git-remote-branch history osx rake rvm tmux tmuxinator)
-plugins=(git rails ruby vundle vagrant capistrano gem git-extras git-remote-branch history osx rake chruby docker tmux tmuxinator)
+plugins=(git rails ruby vundle vagrant capistrano gem git-extras git-remote-branch history osx rake chruby docker tmux tmuxinator asdf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -78,10 +78,18 @@ SAVEHIST=100000
 # # The next line enables shell command completion for gcloud.
 # source '/Users/nate/Downloads/google-cloud-sdk/completion.zsh.inc'
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+#
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export FZF_DEFAULT_COMMAND='ag -l --nocolor -g ""'
+
+
+# . /usr/local/opt/asdf/asdf.sh
+# . /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/bitcomplete bit
