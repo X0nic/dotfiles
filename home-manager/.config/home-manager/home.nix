@@ -43,6 +43,15 @@
     pkgs.pre-commit
     pkgs.ffmpeg-full
     pkgs.calibre
+    pkgs.starship
+    pkgs.neovim
+    pkgs.fzf
+    pkgs.atuin
+    pkgs.ripgrep
+    pkgs.pyenv
+    pkgs.lsd
+    pkgs.mosh
+    pkgs.tig
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
