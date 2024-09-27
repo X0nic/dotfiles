@@ -122,3 +122,4 @@ source ~/.zshrc.local
 autoload -U +X bashcompinit && bashcompinit
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+if [ -f "/home/nate/.config/fabric/fabric-bootstrap.inc" ]; then . "/home/nate/.config/fabric/fabric-bootstrap.inc"; fi
