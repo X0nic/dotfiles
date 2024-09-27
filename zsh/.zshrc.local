@@ -1,0 +1,117 @@
+#
+# Editors
+#
+
+export EDITOR='nvim'
+export VISUAL='nvim'
+export PAGER='less'
+
+#
+# Language
+#
+
+if [[ -z "$LANG" ]]; then
+  export LANG='en_US.UTF-8'
+fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# export FZF_DEFAULT_COMMAND='ag -l --nocolor -g ""'
+
+test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# eval "$(atuin init zsh)"
+# eval "$(atuin init zsh --disable-ctrl-r)"
+eval "$(atuin init zsh --disable-up-arrow)"
+
+function env-local(){
+  [[ -L .env.local ]] && [[ -f .env.local.connect-to-local ]] && {
+    rm .env.local && ln -s .env.local.connect-to-local .env.local;
+  }
+}
+
+function env-stg(){
+  [[ -L .env.local ]] && [[ -f .env.local.connect-to-stg ]] && {
+    rm .env.local && ln -s .env.local.connect-to-stg .env.local;
+  }
+}
+
+function env-prd(){
+  [[ -L .env.local ]] && [[ -f .env.local.connect-to-prd ]] && {
+    rm .env.local && ln -s .env.local.connect-to-prd .env.local;
+  }
+}
+
+# CTRL-/ to toggle small preview window to see the full command
+# CTRL-Y to copy the command into clipboard using pbcopy
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}' --preview-window up:3:hidden:wrap
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+
+# Preview file content using bat (https://github.com/sharkdp/bat)
+export FZF_CTRL_T_OPTS="
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
+# Print tree structure in the preview window
+export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
+
+. "$HOME/.asdf/asdf.sh"
+# . /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh
+# eval "$(asdf exec direnv hook zsh)"
+
+eval "$(direnv hook zsh)"
+
+# Customize to your needs...
+export ZPLUG_HOME=/home/nate/.zplug
+source $ZPLUG_HOME/init.zsh
+
+# Plugins
+zplug "plugins/git",   from:oh-my-zsh
+zplug "plugins/osx",   from:oh-my-zsh
+zplug "zsh-users/zsh-autosuggestions"
+# zplug "clvv/fasd"
+# zplug "b4b4r07/enhancd"
+zplug "junegunn/fzf"
+zplug "Peltoche/lsd"
+zplug 'yuhonas/zsh-aliases-lsd'
+zplug "g-plane/zsh-yarn-autocompletions"
+# zplug "romkatv/powerlevel10k", as:theme, depth:1
+# zplug "kiurchv/asdf.plugin.zsh", defer:2
+
+
+zplug load
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+bindkey -M emacs '^F' fzf-history-widget
+bindkey -M vicmd '^F' fzf-history-widget
+bindkey -M viins '^F' fzf-history-widget
+
+# export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+# export PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
+
+complete -o nospace -C /usr/bin/nomad nomad
+
+# >>> coursier install directory >>>
+export PATH="$PATH:/home/nate/.local/share/coursier/bin"
+# <<< coursier install directory <<<
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# pnpm
+export PNPM_HOME="/home/nate/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+eval "$(starship init zsh)"

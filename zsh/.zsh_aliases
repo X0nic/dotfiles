@@ -1,0 +1,11 @@
+alias rvmify='echo 2.6.3 > .ruby-version && echo "${PWD##*/}" > .ruby-gemset && cd . && rvm info'
+alias dockerify='eval "$(boot2docker shellinit)"'
+
+alias v='nvim'
+alias vim='nvim'
+
+# KBS
+alias av='python ~/Documents/dev/kbs/ansible-vault-shortcuts/av.py'
+alias rdeploy='~/Documents/dev/kbs/deploy/rdeploy.sh'
+
+
