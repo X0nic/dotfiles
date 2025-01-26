@@ -56,6 +56,10 @@
     pkgs.ansible
     pkgs.awscli
     pkgs.mariadb
+    pkgs.lazygit
+    pkgs.zig
+    pkgs.clang
+    pkgs.lldb
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
